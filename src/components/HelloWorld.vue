@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <el-button>按钮</el-button>
+    <el-button @click="login">按钮</el-button>
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul>
@@ -85,11 +85,17 @@
 </template>
 
 <script>
+import {requestLogin} from '../api/user'
 export default {
   name: 'HelloWorld',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  methods: {
+    login () {
+      requestLogin({'name': 'linjinze999'}).then(data => this.$alert(data))
     }
   }
 }
